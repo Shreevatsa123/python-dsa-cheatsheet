@@ -1,5 +1,3 @@
------
-
 # PYTHON DSA CHEAT SHEET (Enhanced)
 
 ## TABLE OF CONTENTS
