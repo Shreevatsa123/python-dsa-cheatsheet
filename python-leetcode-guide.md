@@ -4,24 +4,22 @@ This guide focuses on common *patterns*, *templates*, and *problem-specific stru
 
 ## TABLE OF CONTENTS
 
-1.  [Core Data Structure Patterns](https://www.google.com/search?q=%23core-data-structure-patterns)
-      * [Stack (LIFO)](https://www.google.com/search?q=%23stack-lifo)
-      * [Queue (FIFO) & BFS Pattern](https://www.google.com/search?q=%23queue-fifo--bfs-pattern)
-2.  [Core Algorithm Patterns](https://www.google.com/search?q=%23core-algorithm-patterns)
-      * [Two Pointers](https://www.google.com/search?q=%23two-pointers)
-      * [Sliding Window](https://www.google.com/search?q=%23sliding-window)
-      * [Manual Binary Search](https://www.google.com/search?q=%23manual-binary-search)
-3.  [Recursive Patterns](https://www.google.com/search?q=%23recursive-patterns)
-      * [DFS (Recursion)](https://www.google.com/search?q=%23dfs-recursion)
-      * [Backtracking](https://www.google.com/search?q=%23backtracking)
-4.  [Problem-Specific Structures](https://www.google.com/search?q=%23problem-specific-structures)
-      * [Linked List Operations](https://www.google.com/search?q=%23linked-list-operations)
-      * [Tree Operations](https://www.google.com/search?q=%23tree-operations)
-5.  [Python-Specific Tricks](https://www.google.com/search?q=%23python-specific-tricks)
-6.  [Quick Reference: When to Use What](https://www.google.com/search?q=%23quick-reference-when-to-use-what)
-7.  [Core Function Reference (from README.md)](https://www.google.com/search?q=%23core-function-reference-from-readmemd)
-
------
+1.  [Core Data Structure Patterns](#core-data-structure-patterns)
+    * [Stack (LIFO)](#stack-lifo)
+    * [Queue (FIFO) & BFS Pattern](#queue-fifo--bfs-pattern)
+2.  [Core Algorithm Patterns](#core-algorithm-patterns)
+    * [Two Pointers](#two-pointers)
+    * [Sliding Window](#sliding-window)
+    * [Manual Binary Search](#manual-binary-search)
+3.  [Recursive Patterns](#recursive-patterns)
+    * [DFS (Recursion)](#dfs-recursion)
+    * [Backtracking](#backtracking)
+4.  [Problem-Specific Structures](#problem-specific-structures)
+    * [Linked List Operations](#linked-list-operations)
+    * [Tree Operations](#tree-operations)
+5.  [Python-Specific Tricks](#python-specific-tricks)
+6.  [Quick Reference: When to Use What](#quick-reference-when-to-use-what)
+7.  [Core Function Reference (from README.md)](#core-function-reference-from-readmemd)
 
 ## CORE DATA STRUCTURE PATTERNS
 
