@@ -275,6 +275,13 @@ arr.index(2)                  # 1 (raises ValueError if not found)
 # Return a shallow copy - O(n)
 arr_copy = arr.copy()
 # Also common: arr_copy = arr[:]
+
+# 1. Shallow Copy (`.copy()`): Creates a new list, but shares references to any nested objects.
+# 2. Deep Copy (`copy.deepcopy()`): Creates a new list AND new copies of all nested objects.
+# 3. Shallow: Changing a nested object (e.g., an inner list) will affect the original list.
+# 4. Deep: Changing a nested object will *not* affect the original list; it's 100% separate.
+# 5. You must `import copy` to use the `deepcopy()` function.
+
 ```
 
 ### List Comprehension
