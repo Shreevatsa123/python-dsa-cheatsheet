@@ -203,6 +203,15 @@ s4 = s1 * 3  # "hellohellohello"
 # Standard creation
 arr = [1, 2, 3]
 
+# * acts as a sequence operation when Python sees a sequence on one side
+# and an integer on the other.
+#
+# Rule: sequence * integer (or integer * sequence)
+# What it does: Creates a new, longer sequence by repeating the original one.
+#
+# A "sequence" in Python is anything that is an ordered collection,
+# like a list or a string.
+
 # Create a list of n zeros
 n = 5
 arr = [0] * n                 # [0, 0, 0, 0, 0]
