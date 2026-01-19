@@ -1,3 +1,5 @@
+<a name="top"></a>
+
 # PYTHON DSA CHEAT SHEET 
 
 ## TABLE OF CONTENTS
@@ -96,6 +98,10 @@ chr(65)   # 'A' (ASCII integer to char)
 ```
 
 -----
+
+<p align="right">
+  <a href="#top">⬆ Back to Top</a>
+</p>
 
 ## STRINGS
 
