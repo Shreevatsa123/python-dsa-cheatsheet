@@ -99,8 +99,8 @@ chr(65)   # 'A' (ASCII integer to char)
 
 -----
 
-<p align="right">
-  <a href="#top">⬆ Back to Top</a>
+<p align="lefft">
+  <a href="#top">Back to Top</a>
 </p>
 
 ## STRINGS
@@ -200,6 +200,10 @@ s4 = s1 * 3  # "hellohellohello"
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## LISTS
 
@@ -315,6 +319,10 @@ flat = [num for row in matrix for num in row]  # [1, 2, 3, 4]
 
 -----
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
 ## TUPLES
 
 ### Operations (Immutable)
@@ -359,6 +367,10 @@ m, mx, s = get_stats([1, 2, 3]) # m=1, mx=3, s=6
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## SETS
 
@@ -432,6 +444,10 @@ a.issuperset({1, 2})    # True
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## DICTIONARIES
 
@@ -526,6 +542,10 @@ nums = [1, 2, 3]
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## COLLECTIONS MODULE
 
