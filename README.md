@@ -646,6 +646,10 @@ dq.rotate(-1)                 # deque([2, 3, 4, 1])
 
 -----
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
 ## HEAPQ (Min Heap)
 
 ```python
@@ -758,6 +762,10 @@ count = bisect.bisect_right(arr, 4) - bisect.bisect_left(arr, 4) # 3
 
 -----
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
 ## MATH MODULE
 
 ```python
@@ -800,6 +808,10 @@ min(1, 2, 3), max(1, 2, 3)    # 1, 3
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## ITERTOOLS
 
@@ -857,6 +869,10 @@ list(chain([1, 2], [3, 4], ['a']))     # [1, 2, 3, 4, 'a']
 
 -----
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
 ## LAMBDA, MAP, FILTER, REDUCE
 
 ```python
@@ -899,6 +915,10 @@ reduce(lambda x, y: x + y, [1, 2, 3], 10) # 16
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## COMMON PATTERNS
 
@@ -1013,6 +1033,10 @@ max(arr_pairs, key=lambda x: x[1]) # (2, 8)
 
 -----
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
 ## STRING/LIST OPERATIONS COMPARISON
 
 ### Reverse
@@ -1075,6 +1099,9 @@ deep[0].append(99)
 ```
 
 -----
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## ASCII VALUES
 
@@ -1098,6 +1125,10 @@ char = chr(num + ord('0')) # '5'
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## BIT OPERATIONS
 
@@ -1144,6 +1175,10 @@ x & -x                        # 5 & -5 = 0101 & ...1011 = 0001 (1)
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
 
 ## INFINITY & NAN
 
