@@ -174,7 +174,7 @@ s4 = s1 * 3  # "hellohellohello"
 "user:pass:123".split(':')  # ['user', 'pass', '123']
 
 # Join an iterable of strings with a delimiter
-'-'.join(['a', 'b', 'c'])  # 'a-b'
+'-'.join(['a', 'b', 'c'])  # 'a-b-c'
 
 # Replace all occurrences (returns new string)
 "hello".replace('l', 'X')  # "heXXo"
