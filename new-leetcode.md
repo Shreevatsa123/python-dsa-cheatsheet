@@ -1,12 +1,3 @@
-This is a great initiative. Your current files are a strong foundation, but they are missing the "intermediate-to-advanced" patterns that actually show up in 70% of medium/hard interviews (like Hash Maps for tracking, Monotonic Stacks, and Graphs).
-
-Here are the updated versions. The biggest overhaul is to the **LeetCode Guide** (`python-leetcode-guide.md`), which I have rewritten to include Hash Maps, Prefix Sums, Monotonic Stacks, Union Find, and Tries.
-
-### 1. Update for `python-leetcode-guide.md`
-
-*Replace the entire content of your existing file with this. It now includes the "Hash Map" pattern you requested, plus other missing major patterns.*
-
-```markdown
 # PYTHON LEETCODE/INTERVIEW GUIDE (Pattern-Focused)
 
 This guide focuses on common *patterns*, *templates*, and *problem-specific structures* used in LeetCode. It assumes familiarity with the core syntax from `README.md`.
@@ -481,50 +472,6 @@ def climbStairs(n):
 
 ```
 
-```
-
-### 2. Additions for `README.md`
-*Your main README is very good for basic syntax. I recommend appending this new "Advanced" section to the end of `README.md` so you have the boilerplate ready for standard Python use.*
-
-**Copy-paste this to the bottom of `README.md`:**
-
-```markdown
------
-
-<p align="lefft">
-  <a href="#top">Back to Top</a>
-</p>
-
-## GRAPH BUILDING BOILERPLATE
-
-Constructing an adjacency list is the first step in 90% of graph problems.
-
-```python
-from collections import defaultdict
-
-edges = [[0, 1], [1, 2], [2, 0]]
-n = 3
-
-# 1. Undirected Graph
-adj = defaultdict(list)
-for u, v in edges:
-    adj[u].append(v)
-    adj[v].append(u)
-
-# 2. Directed Graph
-adj = defaultdict(list)
-for src, dest in edges:
-    adj[src].append(dest)
-
-# 3. Weighted Graph
-# edges = [[0, 1, 5], ...]
-adj = defaultdict(list)
-for u, v, w in edges:
-    adj[u].append((v, w))
-    adj[v].append((u, w))
-
-```
-
 ## USEFUL SYSTEM SETTINGS
 
 ### Recursion Limit
@@ -551,7 +498,7 @@ def fib(n):
 
 ```
 
-```
+
 
 ### 3. Update for `leetcode-platform-info.md`
 *Add this section at the end. It explains the "Hidden Imports" that LeetCode does for you, which is a common point of confusion.*
@@ -559,7 +506,6 @@ def fib(n):
 **Copy-paste this to the end of `leetcode-platform-info.md`:**
 
 ```markdown
----
 
 ## 6. The "Hidden" Imports
 
