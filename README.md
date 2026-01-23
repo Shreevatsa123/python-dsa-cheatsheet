@@ -183,6 +183,7 @@ s4 = s1 * 3  # "hellohellohello"
 
 # Join an iterable of strings with a delimiter
 '-'.join(['a', 'b', 'c'])  # 'a-b-c'
+#join is not used to joing a string with a character. better to use +. also join is to join a list of characters with a specific delimeter and it also is not inplace = True
 
 # Replace all occurrences (returns new string)
 "hello".replace('l', 'X')  # "heXXo"
