@@ -498,25 +498,3 @@ def fib(n):
 
 ```
 
-
-
-### 3. Update for `leetcode-platform-info.md`
-*Add this section at the end. It explains the "Hidden Imports" that LeetCode does for you, which is a common point of confusion.*
-
-**Copy-paste this to the end of `leetcode-platform-info.md`:**
-
-```markdown
-
-## 6. The "Hidden" Imports
-
-You don't need to import common libraries. LeetCode automatically imports these for you:
-
-* `collections` (Counter, deque, defaultdict)
-* `heapq` (heappush, heappop, heapify)
-* `bisect` (bisect_left, bisect_right)
-* `math` (inf, ceil, floor, gcd)
-* `functools` (cache, lru_cache, cmp_to_key)
-* `itertools` (permutations, combinations, product)
-* `random` (randint, choice)
-
-```
