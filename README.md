@@ -24,7 +24,9 @@
 15. [ASCII Values](#ascii-values)
 16. [Bit Operations](#bit-operations)
 17. [Infinity & NaN](#infinity--nan)
-18. [Time Complexity Reference](#time-complexity-reference)
+18. [GRAPH BUILDING BOILERPLATE](#graph-building-boilerplate)
+19. [Time Complexity Reference](#time-complexity-reference)
+20. [The Hidden Imports](#the-hidden-imports)
 
 -----
 
@@ -1204,7 +1206,42 @@ math.isinf(pos_inf)           # True
 # Note: `nan == nan` is *always* False
 ```
 
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
+## GRAPH BUILDING BOILERPLATE
+
+Constructing an adjacency list is the first step in 90% of graph problems.
+
+```python
+from collections import defaultdict
+
+edges = [[0, 1], [1, 2], [2, 0]]
+n = 3
+
+# 1. Undirected Graph
+adj = defaultdict(list)
+for u, v in edges:
+    adj[u].append(v)
+    adj[v].append(u)
+
+# 2. Directed Graph
+adj = defaultdict(list)
+for src, dest in edges:
+    adj[src].append(dest)
+
+# 3. Weighted Graph
+# edges = [[0, 1, 5], ...]
+adj = defaultdict(list)
+for u, v, w in edges:
+    adj[u].append((v, w))
+    adj[v].append((u, w))
+
+
 -----
+
+```
 
 ## TIME COMPLEXITY REFERENCE
 
@@ -1219,3 +1256,15 @@ math.isinf(pos_inf)           # True
 | **Sort** | O(n log n) | - | - | - | O(n) `heapify` (Build heap) |
 
 *(Avg) = Average Case. Set/Dict have a worst-case of O(n) due to hash collisions, but this is rare in practice.*
+
+## The "Hidden" Imports
+
+You don't need to import common libraries. LeetCode automatically imports these for you:
+
+* `collections` (Counter, deque, defaultdict)
+* `heapq` (heappush, heappop, heapify)
+* `bisect` (bisect_left, bisect_right)
+* `math` (inf, ceil, floor, gcd)
+* `functools` (cache, lru_cache, cmp_to_key)
+* `itertools` (permutations, combinations, product)
+* `random` (randint, choice)
