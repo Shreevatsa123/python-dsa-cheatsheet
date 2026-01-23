@@ -9,23 +9,30 @@ This guide focuses on common *patterns*, *templates*, and *problem-specific stru
     * [Prefix Sum](#prefix-sum)
 2.  [Pointer Patterns](#pointer-patterns)
     * [Two Pointers](#two-pointers)
+    * [Manual Binary Search](#manual-binary-search)
     * [Sliding Window](#sliding-window)
     * [Fast & Slow Pointers (Floyd's)](#fast--slow-pointers-floyds)
 3.  [Stack & Queue Patterns](#stack--queue-patterns)
+    * [Stack (LIFO)](#stack-lifo)
     * [Monotonic Stack](#monotonic-stack)
     * [BFS (Level Order)](#bfs-level-order)
-4.  [Recursive & Graph Patterns](#recursive--graph-patterns)
+5.  [Recursive & Graph Patterns](#recursive--graph-patterns)
     * [DFS (Depth-First Search)](#dfs-depth-first-search)
     * [Backtracking](#backtracking)
     * [Union Find (Disjoint Set)](#union-find-disjoint-set)
     * [Topological Sort (Kahn's Algo)](#topological-sort-kahns-algo)
     * [Dijkstra (Shortest Path)](#dijkstra-shortest-path)
-5.  [Heaps & Intervals](#heaps--intervals)
+6.  [Heaps & Intervals](#heaps--intervals)
     * [Top 'K' Elements](#top-k-elements)
     * [Merge Intervals](#merge-intervals)
-6.  [Advanced Data Structures](#advanced-data-structures)
+7.  [Advanced Data Structures](#advanced-data-structures)
     * [Trie (Prefix Tree)](#trie-prefix-tree)
-7.  [Dynamic Programming Patterns](#dynamic-programming-patterns)
+8.  [Dynamic Programming Patterns](#dynamic-programming-patterns)
+9.  [PROBLEM-SPECIFIC STRUCTURES](#problem-specific-structures)
+    * [Linked List Operations](#linked-list-operations)
+    * [Tree Operations](#tree-operations)
+10. [PYTHON-SPECIFIC TRICKS](#python-specific-tricks)
+11. [QUICK REFERENCE: WHEN TO USE WHAT](#quick-reference-when-to-use-what)
 
 ---
 
@@ -125,6 +132,26 @@ while p1 < len(arr1) and p2 < len(arr2):
 
 ```
 
+### Manual Binary Search
+
+Used when `bisect` isn't flexible enough (e.g., finding first/last occurrence, searching on a condition).
+
+**Note:** For the `bisect` module, see [Bisect in README.md](https://www.google.com/search?q=%23bisect-binary-search).
+
+```python
+left, right = 0, len(arr) - 1
+while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target:
+        # Found it, handle logic
+        return mid
+    elif arr[mid] < target:
+        left = mid + 1
+    else:
+        right = mid - 1
+
+```
+
 ### Sliding Window
 
 **Use when:** Finding optimal contiguous subarray (longest, shortest, max sum).
@@ -171,6 +198,19 @@ while fast and fast.next:
 ---
 
 ## STACK & QUEUE PATTERNS
+
+### Stack (LIFO)
+
+Used for "last-in, first-out" logic, like matching parentheses, path traversal, or monotonicity. Implemented using a plain `list`.
+
+```python
+stack = []
+stack.append(x)                # Push - O(1)
+if stack:                      # Check if not empty
+    val = stack.pop()          # Pop - O(1)
+    peek = stack[-1]           # Peek - O(1)
+
+```
 
 ### Monotonic Stack
 
@@ -250,6 +290,36 @@ while stack:
             visited.add(neighbor)
             stack.append(neighbor)
 
+```
+
+### Backtracking
+
+Used for finding all possible solutions (e.g., permutations, combinations, subsets, pathfinding).
+
+```python
+def backtrack(path, remaining_candidates):
+    # 1. Base case: Solution found
+    if condition_met:
+        result.append(path[:]) # Append a *copy*
+        return
+    
+    # 2. Base case: Invalid path
+    if not_valid:
+        return
+    
+    # 3. Iterate through choices
+    for i in range(len(remaining_candidates)):
+        choice = remaining_candidates[i]
+        
+        # Add choice to path
+        path.append(choice)
+        
+        # Recurse
+        # (Pass modified candidates, e.g., `i + 1` for subsets)
+        backtrack(path, new_candidates)
+        
+        # Backtrack (remove choice)
+        path.pop()
 ```
 
 ### Union Find (Disjoint Set)
@@ -498,3 +568,142 @@ def fib(n):
 
 ```
 
+## PROBLEM-SPECIFIC STRUCTURES
+
+### Linked List Operations
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Reverse linked list (Iterative)
+def reverseList(head):
+    prev, curr = None, head
+    while curr:
+        next_node = curr.next # Store next
+        curr.next = prev      # Reverse link
+        prev = curr           # Move prev
+        curr = next_node      # Move curr
+    return prev # New head is prev
+
+# Check cycle (Slow/Fast pointers)
+def hasCycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+# Get kth node from end
+def getKthFromEnd(head, k):
+    fast = head
+    for _ in range(k): # Move fast k steps ahead
+        fast = fast.next
+    
+    slow = head
+    while fast: # When fast hits end, slow is at kth from end
+        slow = slow.next
+        fast = fast.next
+    
+    return slow
+
+```
+
+### Tree Operations
+
+```python
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+# Inorder traversal (Left -> Root -> Right)
+def inorder(root):
+    result = []
+    if not root:
+        return result
+    result.extend(inorder(root.left))
+    result.append(root.val)
+    result.extend(inorder(root.right))
+    return result
+
+# Preorder traversal (Root -> Left -> Right)
+def preorder(root):
+    result = []
+    if not root:
+        return result
+    result.append(root.val)
+    result.extend(preorder(root.left))
+    result.extend(preorder(root.right))
+    return result
+
+# Postorder traversal (Left -> Right -> Root)
+def postorder(root):
+    result = []
+    if not root:
+        return result
+    result.extend(postorder(root.left))
+    result.extend(postorder(root.right))
+    result.append(root.val)
+    return result
+
+```
+
+## PYTHON-SPECIFIC TRICKS
+
+```python
+# Swap without temp variable
+a, b = b, a
+
+# Multiple assignment
+x, y, z = 1, 2, 3
+
+# Unpack with * (e.g., get head and tail)
+first, *middle, last = [1, 2, 3, 4, 5]
+# first=1, middle=[2,3,4], last=5
+
+```
+
+## QUICK REFERENCE: WHEN TO USE WHAT
+
+| Use Case | Data Structure | Why |
+|:---|:---|:---|
+| Fast lookup (is `x` in set?) | Set / Dict | O(1) average |
+| Store ordered items | List | O(1) access by index |
+| Frequency count | `Counter` | O(n) build, O(1) access |
+| Grouping items | `defaultdict(list)` | Clean, no key checks |
+| Priority queue (min/max) | `heapq` | O(log n) push/pop |
+| BFS (graph/tree levels) | `deque` | O(1) push/pop both ends |
+| Stack (DFS, recursion) | `list` (`append`/`pop`) | O(1) push/pop |
+| Remove duplicates | `set(arr)` | O(n) |
+| Binary search on sorted data | `bisect` module | O(log n) |
+| Immutable key for dict | Tuple | Lists/sets can't be keys |
+
+-----
+
+### CORE FUNCTION REFERENCE (FROM README.MD)
+
+The following topics are covered in detail in the main `README.md` cheatsheet. Use these links for a refresher on core function syntax.
+
+* [**Sorting** (sorted, .sort, key=)](README.md#sorting)
+* [**String Operations** (.split, .join, .strip, etc.)](README.md#strings)
+* [**List Methods** (.append, .pop, .remove, etc.)](README.md#lists)
+* [**Set Operations** (add, remove, &, |)](README.md#sets)
+* [**Dictionary Operations** (.get, .keys, .items, etc.)](README.md#dictionaries)
+* [**defaultdict & Counter**](README.md#collections-module)
+* [**Heap (Priority Queue)** (heappush, heappop, heapify)](README.md#heapq-min-heap)
+* [**Bisect Module** (bisect_left, bisect_right)](README.md#bisect-binary-search)
+* [**List Comprehension**](README.md#list-comprehension)
+* [**Lambda, map, filter**](README.md#lambda-map-filter-reduce)
+* [**Enumerate**](README.md#enumerate)
+* [**Zip**](README.md#zip)
+* [**Any/All**](README.md#anyall)
+* [**Min/Max/Sum**](README.md#summinmax)
+* [**Math Functions** (ceil, floor, gcd, etc.)](README.md#math-module)
+* [**Time Complexity Table**](README.md#time-complexity-reference)
