@@ -14,25 +14,26 @@
     * [Counter](#counter)
     * [defaultdict](#defaultdict)
     * [deque (Double-ended queue)](#deque-double-ended-queue)
-8.  [Heapq (Min Heap)](#heapq-min-heap)
-9.  [Bisect (Binary Search)](#bisect-binary-search)
-10. [Math Module](#math-module)
-11. [Itertools](#itertools)
-12. [Lambda, Map, Filter, Reduce](#lambda-map-filter-reduce)
-13. [Common Patterns](#common-patterns)
+9.  [Queue Module](#queue-module)
+10. [Heapq (Min Heap)](#heapq-min-heap)
+11. [Bisect (Binary Search)](#bisect-binary-search)
+12. [Math Module](#math-module)
+13. [Itertools](#itertools)
+14. [Lambda, Map, Filter, Reduce](#lambda-map-filter-reduce)
+15. [Common Patterns](#common-patterns)
     * [Sorting](#sorting)
     * [Enumerate](#enumerate)
     * [Zip](#zip)
     * [Range](#range)
     * [Any / All](#any--all)
     * [Sum / Min / Max](#sum--min--max)    
-15. [String/List Operations Comparison](#stringlist-operations-comparison)
-16. [ASCII Values](#ascii-values)
-17. [Bit Operations](#bit-operations)
-18. [Infinity & NaN](#infinity--nan)
-19. [GRAPH BUILDING BOILERPLATE](#graph-building-boilerplate)
-20. [Time Complexity Reference](#time-complexity-reference)
-21. [The Hidden Imports](#the-hidden-imports)
+16. [String/List Operations Comparison](#stringlist-operations-comparison)
+17. [ASCII Values](#ascii-values)
+18. [Bit Operations](#bit-operations)
+19. [Infinity & NaN](#infinity--nan)
+20. [GRAPH BUILDING BOILERPLATE](#graph-building-boilerplate)
+21. [Time Complexity Reference](#time-complexity-reference)
+22. [The Hidden Imports](#the-hidden-imports)
 
 -----
 
@@ -654,6 +655,75 @@ dq.rotate(-1)                 # deque([2, 3, 4, 1])
 ```
 
 -----
+
+<p align="lefft">
+  <a href="#top">Back to Top</a>
+</p>
+
+## Queue Module
+
+```python
+from queue import Queue, SimpleQueue, LifoQueue
+```
+
+### `Queue` (FIFO)
+
+```python
+# BOUNDED: Queue(maxsize=N) holds at most N items.
+# put() blocks when full (backpressure).
+# UNBOUNDED: Queue(maxsize=0) never blocks, can grow until memory exhausted.
+q = Queue(maxsize=3)
+
+q.put(x)                       # may block if full
+q.put_nowait(x)                # raises Full if full
+
+x = q.get()                    # may block if empty
+x = q.get_nowait()             # raises Empty if empty
+
+q.qsize()                      # approx size
+q.empty()                      # approx
+q.full()                       # approx (bounded only)
+
+q.task_done()
+q.join()
+```
+
+### `SimpleQueue` (FIFO, unbounded only)
+
+```python
+# Always UNBOUNDED: no maxsize, no full(), no backpressure.
+sq = SimpleQueue()
+
+sq.put(x)                      # never blocks
+x = sq.get()                   # blocks if empty
+
+sq.qsize()
+sq.empty()
+# no full(), task_done(), join()
+```
+
+### `LifoQueue` (LIFO stack)
+
+```python
+# BOUNDED: LifoQueue(maxsize=N) blocks when full.
+# UNBOUNDED: LifoQueue(maxsize=0) never blocks.
+s = LifoQueue(maxsize=3)
+
+s.put(x)                       # top of stack
+x = s.get()                    # last pushed
+
+s.put_nowait(x)                # raises Full if full
+x = s.get_nowait()             # raises Empty if empty
+
+s.qsize(); s.empty(); s.full()
+s.task_done(); s.join()
+```
+
+### Which to use
+
+- `Queue`: FIFO + optional bound + task tracking
+- `LifoQueue`: LIFO + optional bound + task tracking
+- `SimpleQueue`: FIFO only, unbounded, minimal overhead
 
 <p align="lefft">
   <a href="#top">Back to Top</a>
