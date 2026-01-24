@@ -674,17 +674,25 @@ from queue import Queue, SimpleQueue, LifoQueue
 # UNBOUNDED: Queue(maxsize=0) never blocks, can grow until memory exhausted.
 q = Queue(maxsize=3)
 
-q.put(x)                       # may block if full
+q.put(x)                       # enqueue (blocks if full)
 q.put_nowait(x)                # raises Full if full
 
-x = q.get()                    # may block if empty
+x = q.get()                    # dequeue (blocks if empty)
 x = q.get_nowait()             # raises Empty if empty
 
 q.qsize()                      # approx size
 q.empty()                      # approx
 q.full()                       # approx (bounded only)
 
+# task_done(): decrement unfinished task counter.
+# Call once per get(). Required for join() to work.
+# Thread‑safe bookkeeping: each put() increments counter,
+# each task_done() decrements it.
 q.task_done()
+
+# join(): block until unfinished task counter == 0.
+# Use after all puts are done to wait for workers to finish.
+# If you forget task_done() after get(), join() will hang forever.
 q.join()
 ```
 
@@ -699,7 +707,7 @@ x = sq.get()                   # blocks if empty
 
 sq.qsize()
 sq.empty()
-# no full(), task_done(), join()
+# No full(), task_done(), join()
 ```
 
 ### `LifoQueue` (LIFO stack)
